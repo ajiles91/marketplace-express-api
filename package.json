@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.ts",
-    "build": "rimraf dist && tsc",
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "serve": "node dist/index.js",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist"
   },
