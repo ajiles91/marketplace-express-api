@@ -8,7 +8,10 @@
     "build": "tsc",
     "serve": "node dist/index.js",
     "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist"
+    "add-build": "git add dist",
+    "migrate:make": "knex --knexfile src/knexfile.ts -x ts migrate:make",
+    "migrate:latest": "knex --knexfile src/knexfile.ts migrate:latest",
+    "migrate:rollback": "knex --knexfile src/knexfile.ts migrate:rollback"
   },
   "pre-commit": [
     "ts.check",
@@ -19,15 +22,28 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^22.2.0",
+    "@types/pg": "^8.11.10",
     "nodemon": "^3.1.4",
-    "pre-commit": "^1.2.2",
+    "pre-commit": "^1.0.10",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.2.0",
+    "glob": "^11.0.0",
+    "knex": "^3.1.0",
+    "kysely": "^0.27.5",
+    "kysely-data-api": "^1.0.1",
+    "lru-cache": "^11.0.2",
+    "node": "^23.5.0",
+    "pg": "^8.13.1",
+    "postgres": "^3.4.5",
+    "shelljs": "^0.8.5"
   }
 }
