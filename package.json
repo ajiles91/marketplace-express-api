@@ -37,6 +37,7 @@
     "express": "^4.19.2",
     "express-validator": "^7.2.0",
     "glob": "^11.0.0",
+    "gopd": "^1.2.0",
     "knex": "^3.1.0",
     "kysely": "^0.27.5",
     "kysely-data-api": "^1.0.1",
@@ -44,7 +45,6 @@
     "node": "^23.5.0",
     "pg": "^8.13.1",
     "postgres": "^3.4.5",
-    "shelljs": "^0.8.5",
-    "gopd": "^1.2.0"
+    "shelljs": "^0.8.5"
   }
 }
