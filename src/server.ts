@@ -37,10 +37,10 @@ app.use(helmet());
 app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({}));
 app.use(bodyParser.json());
 app.use(morgan("combined")); // use 'tiny' or 'combined'
-// app.use("/idea",ideasRouter, db);
+app.use("/api/idea", ideasRouter);
 
-export const routes = express.Router();
-routes.use(ideasRouter);
+// export const routes = express.Router();
+// routes.use(ideasRouter);
 
 app.get("/", (_req: Request, res: Response) => {
   return res.send("Express Typescript on Vercel");
