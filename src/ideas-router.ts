@@ -8,8 +8,8 @@ ideasRouter.get("/api", async (req, res) => {
   try {
     const ideas = IdeaRepository.getAllIdeas();
     res.json(ideas);
-  } catch (next) {
-    return next;
+  } catch (error) {
+    res.status(404).send({ error: "Unable to retrieve data" });
   }
 });
 
@@ -17,11 +17,11 @@ ideasRouter.get("/api/idea/:id", async (req, res) => {
   try {
     const idea = IdeaRepository.getIdeabyId(req.params.id);
     res.json(idea);
-  } catch (next) {
-    return next;
+  } catch (error) {
+    res.status(404).send({ error: "Unable to retrieve data" });
   }
 });
-ideasRouter.patch("/api/idea/:id", async (req, res, next) => {
+ideasRouter.patch("/api/idea/:id", async (req, res) => {
   try {
     const { claimed } = req.body;
     const newClaimedVariable = { claimed };
@@ -34,7 +34,7 @@ ideasRouter.patch("/api/idea/:id", async (req, res, next) => {
     res.status(400).send({ error: "Unable to update data" });
   }
 });
-ideasRouter.post("/api/idea", async (req, res, next) => {
+ideasRouter.post("/api/idea", async (req, res) => {
   try {
     const { ideaname, ideasummary, authorname, email, claimed, submitted } =
       req.body;
@@ -55,8 +55,8 @@ ideasRouter.post("/api/idea", async (req, res, next) => {
     }
     const idea = IdeaRepository.addNewIdea(req.app.get("db"), newIdea);
     res.status(201).json(idea);
-  } catch (next) {
-    next;
+  } catch (error) {
+    res.status(404).send({ error: "Unable to update data" });
   }
 });
 

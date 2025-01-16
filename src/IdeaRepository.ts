@@ -1,20 +1,21 @@
 import { db } from "./database";
-import { VariableUpdate, IdeaUpdate, Idea, NewIdea } from "./types";
+import { VariableUpdate, IdeaUpdate, NewIdea } from "./types";
 
 export async function getIdeaById(id: number) {
   return await db
-    .selectFrom("idea")
+    .selectFrom("ideas")
     .where("id", "=", id)
     .selectAll()
     .executeTakeFirst();
 }
 
 export async function getAllIdeas() {
-  return await db.selectFrom("idea").selectAll();
+  return await db.selectFrom("ideas").selectAll().execute();
 }
+
 export async function updateIdea(id: number, updateWith: IdeaUpdate) {
   return await db
-    .updateTable("idea")
+    .updateTable("ideas")
     .set(updateWith)
     .where("id", "=", id)
     .execute();
@@ -25,7 +26,7 @@ export async function updateClaimedVariable(
   updateWith: VariableUpdate
 ) {
   return await db
-    .updateTable("idea")
+    .updateTable("ideas")
     .set(updateWith)
     .where("id", "=", id)
     .execute();
@@ -33,7 +34,7 @@ export async function updateClaimedVariable(
 
 export async function createNewIdea(idea: NewIdea) {
   return await db
-    .insertInto("idea")
+    .insertInto("ideas")
     .values(idea)
     .returningAll()
     .executeTakeFirstOrThrow();
@@ -41,7 +42,7 @@ export async function createNewIdea(idea: NewIdea) {
 
 export async function deleteIdea(id: number) {
   return await db
-    .deleteFrom("idea")
+    .deleteFrom("ideas")
     .where("id", "=", id)
     .returningAll()
     .executeTakeFirst();
