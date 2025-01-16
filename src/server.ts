@@ -37,7 +37,7 @@ app.use(helmet());
 app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({}));
 app.use(bodyParser.json());
 app.use(morgan("combined")); // use 'tiny' or 'combined'
-app.use("/api/idea", ideasRouter);
+// app.use("/api/idea", ideasRouter);
 
 // export const routes = express.Router();
 // routes.use(ideasRouter);
