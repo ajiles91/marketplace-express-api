@@ -1,16 +1,14 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, Router } from "express";
 const IdeaRepository = require("./IdeaRepository");
+const ideasRouter: Router = express.Router();
 
-const ideasRouter = express.Router();
-const app = express();
-const jsonParser = express.json();
+console.log("the top of idearoute...");
 
-app.use(jsonParser);
-
-ideasRouter.get("/api", async (req: Request, res: Response) => {
+ideasRouter.get("/api", (req: Request, res: Response) => {
   try {
+    console.log("in the try block..");
     const ideas = IdeaRepository.getAllIdeas();
-    res.json(ideas);
+    res.send(ideas);
   } catch (error) {
     res.status(404).send({ error: "Unable to retrieve data" });
   }
@@ -19,7 +17,7 @@ ideasRouter.get("/api", async (req: Request, res: Response) => {
 ideasRouter.get("/api/idea/:id", async (req: Request, res: Response) => {
   try {
     const idea = IdeaRepository.getIdeabyId(req.params.id);
-    res.json(idea);
+    res.send(idea);
   } catch (error) {
     res.status(404).send({ error: "Unable to retrieve data" });
   }
@@ -32,7 +30,7 @@ ideasRouter.patch("/api/idea/:id", async (req: Request, res: Response) => {
       req.params.id,
       newClaimedVariable
     );
-    res.json(idea);
+    res.send(idea);
   } catch (error) {
     res.status(400).send({ error: "Unable to update data" });
   }
@@ -57,10 +55,9 @@ ideasRouter.post("/api/idea", async (req: Request, res: Response) => {
       }
     }
     const idea = IdeaRepository.addNewIdea(req.app.get("db"), newIdea);
-    res.status(201).json(idea);
+    res.status(201).send(idea);
   } catch (error) {
     res.status(404).send({ error: "Unable to update data" });
   }
 });
-
 module.exports = ideasRouter;

@@ -1,5 +1,6 @@
 import { db } from "./database";
 import { VariableUpdate, IdeaUpdate, NewIdea } from "./types";
+console.log("top of ideaRepo");
 
 export async function getIdeaById(id: number) {
   return await db
@@ -10,6 +11,7 @@ export async function getIdeaById(id: number) {
 }
 
 export async function getAllIdeas() {
+  console.log("in all ideas call");
   return await db.selectFrom("ideas").selectAll().execute();
 }
 
