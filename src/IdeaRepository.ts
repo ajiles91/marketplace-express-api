@@ -3,6 +3,7 @@ import { VariableUpdate, IdeaUpdate, NewIdea } from "./types";
 console.log("top of ideaRepo");
 
 export async function getIdeaById(id: number) {
+  console.log("in getById call");
   return await db
     .selectFrom("ideas")
     .where("id", "=", id)
@@ -11,7 +12,7 @@ export async function getIdeaById(id: number) {
 }
 
 export async function getAllIdeas() {
-  console.log("in all ideas call");
+  console.log("in getAllIdeas call");
   return await db.selectFrom("ideas").selectAll().execute();
 }
 
@@ -20,7 +21,7 @@ export async function updateIdea(id: number, updateWith: IdeaUpdate) {
     .updateTable("ideas")
     .set(updateWith)
     .where("id", "=", id)
-    .execute();
+    .executeTakeFirst();
 }
 
 export async function updateClaimedVariable(
