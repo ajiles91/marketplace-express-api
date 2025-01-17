@@ -21,9 +21,9 @@ app.get("/ping", (req: Request, res: Response) => {
   return res.send("pong 🏓");
 });
 
-app.use(ideasRouter);
+app.use("api/", ideasRouter);
 
 app.listen(port, () => {
-  return console.log(`Server is listening on ${port}`);
+  console.log(`Server is listening on ${port}`);
 });
 module.exports = app;

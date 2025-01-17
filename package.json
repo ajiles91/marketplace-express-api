@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ts-node src/server.ts",
     "build": "tsc",
+    "dev": "ts-node-dev --respawn --pretty --transpile-only src/server.ts",
     "serve": "node dist/index.js",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist",
@@ -33,6 +34,7 @@
     "pre-commit": "^1.2.2",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.4"
   },
   "dependencies": {

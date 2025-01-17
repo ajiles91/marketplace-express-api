@@ -91,7 +91,7 @@ INSERT INTO ideas
     10,
     'build a front end for my server',
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium',
-    'Name 1',
+    'Name 10',
     'name10@email.com',
     false,
     false
