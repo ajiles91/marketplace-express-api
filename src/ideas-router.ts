@@ -1,10 +1,13 @@
-import express from "express";
+import express, { Request, Response } from "express";
 const IdeaRepository = require("./IdeaRepository");
 
 const ideasRouter = express.Router();
+const app = express();
 const jsonParser = express.json();
 
-ideasRouter.get("/api", async (req, res) => {
+app.use(jsonParser);
+
+ideasRouter.get("/api", async (req: Request, res: Response) => {
   try {
     const ideas = IdeaRepository.getAllIdeas();
     res.json(ideas);
@@ -13,7 +16,7 @@ ideasRouter.get("/api", async (req, res) => {
   }
 });
 
-ideasRouter.get("/api/idea/:id", async (req, res) => {
+ideasRouter.get("/api/idea/:id", async (req: Request, res: Response) => {
   try {
     const idea = IdeaRepository.getIdeabyId(req.params.id);
     res.json(idea);
@@ -21,7 +24,7 @@ ideasRouter.get("/api/idea/:id", async (req, res) => {
     res.status(404).send({ error: "Unable to retrieve data" });
   }
 });
-ideasRouter.patch("/api/idea/:id", async (req, res) => {
+ideasRouter.patch("/api/idea/:id", async (req: Request, res: Response) => {
   try {
     const { claimed } = req.body;
     const newClaimedVariable = { claimed };
@@ -34,7 +37,7 @@ ideasRouter.patch("/api/idea/:id", async (req, res) => {
     res.status(400).send({ error: "Unable to update data" });
   }
 });
-ideasRouter.post("/api/idea", async (req, res) => {
+ideasRouter.post("/api/idea", async (req: Request, res: Response) => {
   try {
     const { ideaname, ideasummary, authorname, email, claimed, submitted } =
       req.body;

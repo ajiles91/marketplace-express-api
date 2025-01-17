@@ -11,6 +11,7 @@ import { Database } from "./types";
 export const db = new Kysely<Database>({
   dialect: new NeonDialect({
     connectionString: process.env.DATABASE_URL,
+    host: process.env.PGHOST,
     webSocketConstructor: ws,
   }),
 });
