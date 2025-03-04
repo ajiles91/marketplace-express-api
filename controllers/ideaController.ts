@@ -1,9 +1,9 @@
-import { db } from "./database";
-import { VariableUpdate, IdeaUpdate, NewIdea } from "./types";
-console.log("top of ideaRepo");
+import { IdeaUpdate, NewIdea, VariableUpdate } from "../models/ideasModel";
+import { db } from "../src/database";
+console.log("top of ideaController");
 
 export async function getIdeaById(id: number) {
-  console.log("in getById call");
+  console.log("in getById call" + id);
   return await db
     .selectFrom("ideas")
     .where("id", "=", id)

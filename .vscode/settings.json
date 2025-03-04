@@ -1,3 +1,4 @@
 {
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "cSpell.words": ["BAAO", "GAAE", "GAAG", "IAAA", "MAAM", "tlds"]
 }

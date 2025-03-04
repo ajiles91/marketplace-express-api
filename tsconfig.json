@@ -15,5 +15,10 @@
       "*": ["node_modules/*", "src/types/*"]
     }
   },
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*",
+    "routers/ideasRouter.ts",
+    "controllers/ideaController.ts",
+    "models/ideasModel.ts"
+  ]
 }
