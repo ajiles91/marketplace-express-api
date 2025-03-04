@@ -8,7 +8,7 @@ import Routes from "./routes";
 export default class Server {
   constructor(app: Application) {
     this.config(app);
-    new Routes(app);
+    // new Routes(app);
   }
   private config(app: Application): void {
     const corsOptions: CorsOptions = {
