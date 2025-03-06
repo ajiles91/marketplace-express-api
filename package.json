@@ -10,15 +10,13 @@
     "dev": "ts-node server.ts",
     "prestart": "npm run build",
     "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
     "migrate:make": "knex --knexfile src/knexfile.ts -x ts migrate:make",
     "migrate:latest": "knex --knexfile src/knexfile.ts migrate:latest",
     "migrate:rollback": "knex --knexfile src/knexfile.ts migrate:rollback"
   },
   "pre-commit": [
     "ts.check",
-    "build",
-    "add-build"
+    "build"
   ],
   "keywords": [],
   "author": "",
