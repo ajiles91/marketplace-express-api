@@ -1,24 +1,33 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "strict": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "target": "es6",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "noImplicitAny": true,
+    "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist",
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "src",
     "baseUrl": ".",
+    "skipLibCheck": true,
     "paths": {
       "*": ["node_modules/*", "src/types/*"]
     }
   },
   "include": [
     "./src/**/*",
-    "routers/ideasRouter.ts",
     "controllers/ideaController.ts",
-    "models/ideasModel.ts"
+    "models/ideasModel.ts",
+    "src/controllers/home.controller.ts",
+    "src/controllers/ideas.controller.ts",
+    "src/routes/home.routes.ts",
+    "src/routes/ideas.routes.ts"
   ]
 }
