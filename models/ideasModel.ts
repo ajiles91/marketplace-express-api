@@ -11,7 +11,7 @@ export interface IIdeasTable {
   ideaSummary: string;
   authorName: string;
   email: string;
-  claimed: boolean;
+  claimed: "true" | "false";
   submitted: boolean;
 }
 
